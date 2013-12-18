@@ -83,9 +83,9 @@ usage bin/beez-foundation [-h|-c|-d]
 一度beez-foundationが立ち上がれば、ブラウザから以下のような操作が簡単にできるので開発効率が上がります。
 
 - ファイル/ディレクトリをブラウザから表示・操作することが可能です。
-![static viewer](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation.png?token=844804__eyJzY29wZSI6IlJhd0Jsb2I6c2hpYnVjYWZlL2JlZXotZm91bmRhdGlvbi9tYXN0ZXIvZGVzaWduL2JlZXotZm91bmRhdGlvbi5wbmciLCJleHBpcmVzIjoxMzg3Nzc2NDk0fQ%3D%3D--f52a3a438652f93c1d47faa3ef6e87669a8e83b2)
+![static viewer](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation.png)
 - ビルド・デプロイなどのコマンドオペレーションをブラウザから操作することが可能です。
-![operation](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation_ops.png?token=844804__eyJzY29wZSI6IlJhd0Jsb2I6c2hpYnVjYWZlL2JlZXotZm91bmRhdGlvbi9tYXN0ZXIvZGVzaWduL2JlZXotZm91bmRhdGlvbl9vcHMucG5nIiwiZXhwaXJlcyI6MTM4Nzc3NjUyM30%3D--92c198ed510f76b58d1d209a69fbe156a6c7b88a)
+![operation](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation_ops.png)
 
 
 ## Requirements
