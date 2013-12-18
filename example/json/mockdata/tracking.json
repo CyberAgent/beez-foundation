@@ -1,0 +1,6 @@
+{
+    "/_/tracking": {
+        "get": {"hoge": "/_/tracking"},
+        "post": {"hoge": "/_/tracking"}
+    }
+}

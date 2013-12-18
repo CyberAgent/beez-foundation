@@ -1,0 +1,31 @@
+<h1>Operation</h1>
+<hr />
+<h4><a href="/">Home</a></h4>
+<hr />
+
+<div id="select" class="btn-group" data-toggle="buttons-radio">
+  {{#each list}}
+    <button type="button" id="{{this.target}}" class="btn">{{this.target}}</button>
+  {{/each}}
+</div>
+
+<hr>
+
+<div id="description">
+{{#each list}}
+  <div id="desc-{{this.target}}" style="display: none;">
+    <pre>{{this.comment}}</pre>
+  </div>
+{{/each}}
+</div>
+
+<button type="button" id="action" class="btn btn-primary">Execution!!</button>
+
+<hr>
+
+<h2>Result</h2>
+<div id="result">
+  <span id="status", class="label" style="font-size:1.1em;"></span>
+  <pre id="output"></pre>
+  <span id="end"></span>
+</div>

@@ -1,0 +1,56 @@
+Changelog
+
+Key
+[A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
+
+* Thu Nov 14 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.1
+- [A] Added HTTP method OPTIONS support in mock.
+- [A] Added support for mockdata url parameter.
+- [A] Added custom HTTP Response code and delay. (Static server)
+- [A] Added csssprite support.
+- [A] Added support options.fn in `stylus#write()`.
+- [A] Added png2ratiopng in modstatic.
+- [A] Added forced header. X-Powered-By.
+- [C] Changed logger level.
+- [R] Removed `express.bodyParser` cause of unsupported in connect 3.0.
+- [C] Now supports several header in #addHeader.
+- [F] Fixed version of dependent libraries.
+- [F] Fixed csssprite#isSpriteStylus.
+- [F] Fixed imagemagick.ratioResize.
+- [F] Fixed extname content-type.
+
+* Mon Jul  8 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.7
+- [A] Added Content-Type encoding.
+
+* Wed Jun 19 2013 Yuhei Aihara <aihara_yuhei@cyberagent.co.jp> - 0.6.6
+- [F] Fixed modstatic index.html.hbs.
+- [R] Removed  base-path and stat-path in stylus support.
+- [C] Changed modstatic ua.
+- [C] Changed `f/middleware/modstatic`.
+- [A] Added config.stats ~($HOME) support.
+- [C] Changted suns.js repository.
+
+* Sat May  4 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.5
+- [R] Removed stylus & nib.
+- [A] Added example.
+- [A] Added stylus in beezlib.
+- [A] Added handlebars in beezlib.
+- [A] Added beezlib.
+- [A] custom http response header.
+
+* Tue Apr 23 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.4
+- [A] Added example.(server start)
+- [A] Added jsonminify support.
+
+* Fri Apr 19 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.3
+- [C] Change method name buildpf & deploypj to build & deploy.
+- [C] Refactoring.
+
+* Thu Mar 28 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.2
+- [F] Fixed `path.resolve`'s' null error.
+
+* Mon Mar 25 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.1
+- [C] Second release.
+
+* Feb Thu 21 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.0
+- Initial release.

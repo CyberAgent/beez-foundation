@@ -1,0 +1,45 @@
+<style>
+  /*
+  td, th {
+  border: 2px #808080 solid;
+  text-align: center;
+  }*/
+</style>
+
+<h1>Static file viewer</h1>
+
+<hr />
+<h4><a href="/">Home</a></h4>
+<h4>Module Name: {{module}}</h4>
+<hr />
+
+<table class="table table-hover table-bordered">
+  <thead>
+    <th>Preview</th>
+    {{#unless isSP}}<th>Module Name</th>{{/unless}}
+    <th>File Name</th>
+    <th>Type</th>
+    {{#unless isSP}}<th>UID/GID</th>{{/unless}}
+    {{#unless isSP}}<th>Size</th>{{/unless}}
+    {{#unless isSP}}<th>Modify Time</th>{{/unless}}
+  </thead>
+{{#each list}}
+  <tr class="data">
+    <td class="preview">
+      {{#if this.preview}}
+        <a href="{{this.path.uri}}" target="_blank">
+          <img src="{{this.path.uri}}" width="100px" heigth="100px"/>
+        </a>
+      {{else}}
+        -
+      {{/if}}
+    </td>
+    {{#unless ../isSP}}<td>{{this.module}}</td>{{/unless}}
+    <td><a href="{{this.path.uri}}">{{this.path.file}}</a></td>
+    <td>{{this.type}}</td>
+    {{#unless ../isSP}}<td>{{this.uid}}/{{this.gid}}</td>{{/unless}}
+    {{#unless ../isSP}}<td>{{this.size}}</td>{{/unless}}
+    {{#unless ../isSP}}<td>{{this.mtime}}</td>{{/unless}}
+  </tr>
+{{/each}}
+</table>

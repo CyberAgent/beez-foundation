@@ -1,0 +1,84 @@
+{
+    "name": "beez-foundation",
+    "version": "0.8.1",
+    "description": "It is the basis for the development of browser for smartphones/pc.",
+    "keywords": [
+        "beez",
+        "node",
+        "static",
+        "mock",
+        "server",
+        "development"
+    ],
+    "homepage": "https://github.com/CyberAgent/beez-foundation",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/CyberAgent/beez-foundation/master/LICENSE"
+        }
+    ],
+    "bugs": {
+        "email": "funagayama_kei@cyberagent.co.jp",
+        "url": "https://github.com/CyberAgent/beez-foundation/issues"
+    },
+    "author": {
+        "name": "CyberAgent, Inc",
+        "email": "npm@cyberagent.co.jp",
+        "url": "http://www.cyberagent.co.jp/"
+    },
+    "contributors": [
+        {
+            "name": "Kei Funagayama",
+            "email": "funagayama_kei@cyberagent.co.jp",
+            "url": "https://github.com/fkei"
+        },
+        {
+            "name": "Kazuma Mishimagi",
+            "email": "mishimagi_kazuma@cyberagent.co.jp",
+            "url": "https://github.com/maginemu"
+        },
+        {
+            "name": "HIRAKI Satoru",
+            "email": "hiraki_satoru@cyberagnet.co.jp",
+            "url": "https://github.com/Layzie"
+        },
+            "name": "Yuhei Aihara",
+            "email": "aihara_yuhei@cyberagent.co.jp",
+            "url": "https://github.com/yuhei-a"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/CyberAgent/beez-foundation.git"
+    },
+    "dependencies": {
+        "beezlib": "~0.8.2",
+        "beez-ua": "~1.0.3",
+        "bucks": "~0.8.1",
+        "requirejs": "~2.1.0",
+        "bytes":"~0.2.0",
+        "colors": "~0.6.0",
+        "commander": "~2.0.0",
+        "handlebars": "~1.1.0",
+        "hbs": "~2.4.0",
+        "moment": "~2.4.0",
+        "pause": "~0.0.1",
+        "send": "~0.1.0",
+        "underscore": "~1.5.0",
+        "express": "~3.4.0",
+        "jsonminify": "~0.2.1",
+        "suns": "~0.4.5"
+    },
+    "devDependencies": {
+        "jshint": "~2.3.0",
+        "mocha": "~1.14.0",
+        "should": "~2.1.0"
+    },
+    "engines": {
+        "node": "~0.10.1",
+        "npm": "~1.1.0"
+    },
+    "bin": {
+        "beez-foundation": "./f/beez.js"
+    },
+    "main": "./f/beez.js"
+}
