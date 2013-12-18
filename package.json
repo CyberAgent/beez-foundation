@@ -42,9 +42,11 @@
             "email": "hiraki_satoru@cyberagnet.co.jp",
             "url": "https://github.com/Layzie"
         },
+        {
             "name": "Yuhei Aihara",
             "email": "aihara_yuhei@cyberagent.co.jp",
             "url": "https://github.com/yuhei-a"
+        }
     ],
     "repository": {
         "type": "git",
