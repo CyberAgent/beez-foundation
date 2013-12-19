@@ -34,7 +34,7 @@ beez-foundationでは、beezでの開発効率を上げるためにプレコン�
 ### npmからインストール
 
 ```sh
-$ npm install git+https://github.com/CyberAgent/beez-foundation.git -g
+$ npm install beez-foundation -g
 $ beez-foundation -h
 [mode] npm module access.
 Load beez-common: /Users/funagayama_kei/.nvm/v0.8.15/lib/node_modules/beez-foundation/bin/beez-common
