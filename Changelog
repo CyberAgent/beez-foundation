@@ -3,6 +3,9 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Wed Jan 29 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.2
+- [C] Updated beezlib version to ~0.9.1.
+
 * Thu Nov 14 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.1
 - [A] Added HTTP method OPTIONS support in mock.
 - [A] Added support for mockdata url parameter.
