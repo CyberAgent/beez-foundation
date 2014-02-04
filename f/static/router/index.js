@@ -21,7 +21,13 @@ var Router = function () {
         },
         'exec': {
             'uri': '/e/:target'
-        }
+        },
+        'mock': {
+            'uri': '/mock'
+        },
+        'mockview': {
+            'uri': '/mock/:hash'
+        },
     };
 };
 

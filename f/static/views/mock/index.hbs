@@ -1,0 +1,28 @@
+<h1>{{title}}</h1>
+<hr />
+<h4><a href="/">Home</a></h4>
+
+<hr />
+
+<table id="mocks" class="table table-striped">
+  <tr>
+    <th>No</th>
+    <th>-</th>
+    <th>uri</th>
+    <th>file path</th>
+    <th>hash</th>
+  </tr>
+
+  {{#each list}}
+    <tr>
+      <td>{{@index}}</td>
+      <td>
+        <button type="button" id="action" class="btn btn-primary" data-hash="{{hash}}">View</button>
+      </td>
+      <td>{{uri}}</td>
+      <td>{{path}}</td>
+      <td>{{hash}}</td>
+    </tr>
+  {{/each}}
+
+</table>
