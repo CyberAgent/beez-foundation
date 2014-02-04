@@ -73,19 +73,25 @@ usage bin/beez-foundation [-h|-c|-d]
 @see wiki : [Document](https://github.com/CyberAgent/beez-foundation/wiki)
 
 
-## beez との連携
-
-[beez](https://github.com/CyberAgent/beez)と連携することを前提として開発されています。
-詳しくは [github : beez](https://github.com/CyberAgent/beez) を参照ください。
 
 ### ブラウザからのオペレーション
 
-一度beez-foundationが立ち上がれば、ブラウザから以下のような操作が簡単にできるので開発効率が上がります。
+一度 `beez-foundation` が立ち上がれば、ブラウザから以下のような操作が簡単にできるので開発効率が上がります。
 
 - ファイル/ディレクトリをブラウザから表示・操作することが可能です。
 ![static viewer](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation.png)
 - ビルド・デプロイなどのコマンドオペレーションをブラウザから操作することが可能です。
 ![operation](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation_ops.png)
+- モックデータをブラウザ上から確認する事が可能です。
+![mock data viewer](https://raw.github.com/CyberAgent/beez-foundation/master/design/beez-foundation_mock.png)
+
+
+
+## beez との連携
+
+[beez](https://github.com/CyberAgent/beez)と連携することを前提として開発されています。
+
+詳しくは [github : beez](https://github.com/CyberAgent/beez) を参照ください。
 
 
 ## Requirements
