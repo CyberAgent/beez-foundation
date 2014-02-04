@@ -815,16 +815,11 @@ exports = module.exports = function modstatic(roots, options){
                     !isSpriteCss) {
                     return next();
                 }
-                /**
-                 * If you already have the sprite and you want not to overwrite, skip creating the sprite
-                 */
-                if (fs.existsSync(info.stat.abspath) && config.sprite.options.overwrite === false) {
-                    return next();
-                }
 
                 var dstPath = path.dirname(info.stat.abspath);
                 var group = beezlib.css.sprite.getGroup(info.stat.path, config.sprite.options);
                 var images = beezlib.css.sprite.getImages(dstPath, group, config.sprite.options);
+
                 beezlib.css.sprite.build(dstPath, group, images, config.sprite.options, function(err) {
                     if (err) {
                         return next(err);
