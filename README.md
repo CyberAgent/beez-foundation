@@ -1,7 +1,5 @@
 # beez-foundation
 
-[![NPM](https://nodei.co/npm/beez-foundation.png)](https://nodei.co/npm/beez-foundation/)
-
 
 ## About beez-foundation
 
