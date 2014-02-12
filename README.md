@@ -1,5 +1,8 @@
 # beez-foundation
 
+[![NPM](https://nodei.co/npm/beez-foundation.png)](https://nodei.co/npm/beez-foundation/)
+
+
 ## About beez-foundation
 
 スマートフォン向けブラウザアプリ開発を迅速に開発・リリースするためのローカルWebサーバーです。
