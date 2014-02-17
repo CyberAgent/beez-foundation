@@ -709,8 +709,7 @@ exports = module.exports = function modstatic(roots, options){
         var styl2css = function () {
             var absstylpath = info.stat.abspath.replace(REG_CSS, EXTENSION_STYL);
             if (fs.existsSync(absstylpath)) {
-
-                beezlib.css.stylus.write(absstylpath, info.stat.abspath, config.stylus.options, function(err, css) {
+                beezlib.css.stylus.write(absstylpath, info.stat.abspath, config.stylus, req.headers, function(err, css) {
                     if (err) {
                         if (/failed to locate @import file/.test(err.message)) {
                             var importFile = err.message.match(/failed to locate @import file (.+)/)[1];
