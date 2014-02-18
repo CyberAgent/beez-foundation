@@ -8,6 +8,10 @@
         "static",
         "mock",
         "server",
+        "jpegoptim",
+        "optipng",
+        "pngquant",
+        "imagemagick",
         "development"
     ],
     "homepage": "https://github.com/CyberAgent/beez-foundation",
