@@ -25,19 +25,25 @@ module.exports = new Bootstrap();
 
 Bootstrap.prototype.checklib = function checklib(callback) {
     var message = [];
-    // Check imagemagick/optipng/jpegoptim
-    beezlib.cmd.which('convert', null, function (err, path) { // imagemagick
+    // Check imagemagick/optipng/jpegoptim/pngquant
+    beezlib.cmd.which(beezlib.constant.PROG_CONVERT, null, function (err, path) { // imagemagick
         if (err) { message.push("Please install imagemagick. check: $ which convert"); }
-        beezlib.cmd.which('optipng', null, function (err, path) { // imagemagick
+
+        beezlib.cmd.which(beezlib.constant.PROG_OPTIPNG, null, function (err, path) { // optipng
             if (err) { message.push("Please install optipng. check: $ which optipng"); }
-            beezlib.cmd.which('jpegoptim', null, function (err, path) { // imagemagick
+
+            beezlib.cmd.which(beezlib.constant.PROG_JPEGOPTIM, null, function (err, path) { // jpegoptim
                 if (err) { message.push("Please install jpegoptim. check: $ which jpegoptim"); }
 
-                if (0 < message.length) {
-                    return callback && callback(new Error('Dependent library is missing.'), message);
-                } else {
-                    return callback && callback(null);
-                }
+                beezlib.cmd.which(beezlib.constant.PROG_PNGQUANT, null, function (err, path) { // pngquant
+                    if (err) { message.push("Please install pngquant. check: $ which pngquant"); }
+
+                    if (0 < message.length) {
+                        return callback && callback(new Error('Dependent library is missing.'), message);
+                    } else {
+                        return callback && callback(null);
+                    }
+                });
             });
         });
     });
