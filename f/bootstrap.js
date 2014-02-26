@@ -19,8 +19,10 @@ var Bootstrap = function Bootstrap() {
     this.config = null;
     this.store = {};
     this.encode = 'utf-8';
-    //this.DEFAULT_CONFIG = beezlib.fsys.readJsonSync(__dirname + '/../default.json', true);
-    this.DEFAULT_CONFIG = __dirname + '/../default.json';
+    this.__dirname = __dirname;
+    this.cwd = process.cwd();
+    this.DEFAULT_CONFIG = this.__dirname + '/../default.json';
+
 
 };
 
@@ -68,7 +70,7 @@ Bootstrap.prototype.run = function run(callback) {
             process.exit(1);
         }
 
-        self.package = JSON.parse(fs.readFileSync(path.resolve(__dirname + '/../package.json'), self.encode));
+        self.package = JSON.parse(fs.readFileSync(path.resolve(self.__dirname + '/../package.json'), self.encode));
 
         commander
             .version(self.package)
@@ -88,8 +90,19 @@ Bootstrap.prototype.run = function run(callback) {
 
         if (commander.standalone) {
             // standalone mode
-            console.log('\n## [stand-alone mode]'.green);
+            console.log('\n## Mode:'.green, '[Stand-alone]'.blue);
             commander.config = self.DEFAULT_CONFIG;
+
+            // add cwd stats
+            var _cwdmod = path.basename(self.cwd) + ':' + self.cwd;
+
+            if (commander.addmods) {
+                commander.addmods += ',' + _cwdmod;
+            } else {
+                commander.addmods = _cwdmod;
+            }
+        } else {
+            console.log('\n## Mode:'.green, '[Configration-file]'.blue, commander.config.green);
         }
 
         if (!commander.standalone && !commander.config) {
@@ -127,8 +140,8 @@ Bootstrap.prototype.run = function run(callback) {
             });
         }
 
-        self.config.HOME = __dirname;
-        var cwd = self.config.cwd = process.cwd();
+        self.config.HOME = self.__dirname;
+        var cwd = self.config.cwd = self.cwd;
         var stat = self.config.app.stat;
 
         /**
@@ -211,7 +224,7 @@ Bootstrap.prototype.run = function run(callback) {
 
             self.config.stats[key].from = beezlib.fsys.pathTilde(self.config.stats[key].from);
             self.config.stats[key].path = beezlib.fsys.pathTilde(self.config.stats[key].path);
-	        var dir = path.resolve(self.config.HOME,
+            var dir = path.resolve(self.config.HOME,
                                    self.config.stats[key].from || '.',
                                    self.config.stats[key].path);
 
@@ -226,6 +239,8 @@ Bootstrap.prototype.run = function run(callback) {
 
         // Add mods
         if (commander.addmods) {
+            beezlib.logger.debug('addmods:', commander.addmods);
+
             var __add_mods = commander.addmods.replace(/\ /, '').split(',');
             _.each(__add_mods, function(data) {
                 var _d = data.split(':');
@@ -238,7 +253,7 @@ Bootstrap.prototype.run = function run(callback) {
                 self.config.stats[_d[0]].path = beezlib.fsys.pathTilde(_d[1]);
                 self.config.stats[_d[0]].from = beezlib.fsys.pathTilde(_d[2]) || '.';
 
-	            var dir = path.resolve(self.config.stats[_d[0]].from, self.config.stats[_d[0]].path);
+                var dir = path.resolve(self.config.stats[_d[0]].from, self.config.stats[_d[0]].path);
 
                 if (!beezlib.fsys.isDirectorySync(dir)) {
                     beezlib.logger.error('add mods directory not found. path:', self.config.stats[_d[0]].path, 'from:', self.config.stats[_d[0]].from);
