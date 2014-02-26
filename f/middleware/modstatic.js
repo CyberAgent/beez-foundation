@@ -872,16 +872,16 @@ exports = module.exports = function modstatic(roots, options){
                 /**
                  * define the 'Content-Type' proprietary extension of Beez.
                  */
-                if (info.stat.fsstats.isDirectory()) {
+                if (info.stat.fsstats && info.stat.fsstats.isDirectory()) {
                     stream.type('text/html; charset="' + ENCODE + '"');
 
                 } else if (beezlib.css.sprite.isSpriteStylus(info.stat.path, config.sprite.options)) {
                     stream.type('text/plain; charset="' + ENCODE + '"');
 
-                } else if (REG_STYL.test(info.stat.path) && info.stat.fsstats.isFile()) {
+                } else if (REG_STYL.test(info.stat.path) && info.stat.fsstats && info.stat.fsstats.isFile()) {
                     stream.type('text/plain; charset="' + ENCODE + '"');
 
-                } else if (REG_HBS.test(info.stat.path) && info.stat.fsstats.isFile()) {
+                } else if (REG_HBS.test(info.stat.path) && info.stat.fsstats && info.stat.fsstats.isFile()) {
                     stream.type('text/plain; charset="' + ENCODE + '"');
 
                 } else if (REG_HBSC_JS.test(info.stat.path)) {
