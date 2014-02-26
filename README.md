@@ -1,5 +1,5 @@
-# beez-foundation
-
+beez-foundation
+====
 
 ## About beez-foundation
 
@@ -30,9 +30,7 @@ beez-foundationでは、beezでの開発効率を上げるためにプレコン�
 
 一度設定ファイルを記述すれば、あとはシームレスにCSSプリプロセッサやテンプレートエンジンを使うことができます。
 
-## beez-foundationのインストール
-
-### npmからインストール
+### Install
 
 ```sh
 $ npm install beez-foundation -g
@@ -50,28 +48,10 @@ $ beez-foundation -h
     -a --addmods <value>  I want to add a "/ m" module. It is more than one can be specified, separated by commas. format) -a dirname:absdirpath:from,... example) -a hoge:/tmp/hoge:
 ```
 
-### ソースからインストール
-
-```sh
-$ git clone https://github.com/CyberAgent/beez-foundation.git
-$ cd beez-foundation
-$ ./bin/beez-foundation -h
-[mode] direct access.
-Load beez-common: bin/beez-common
-usage bin/beez-foundation [-h|-c|-d]
-    -d  debug mode
-    -c  server config file path
-    -a  I want to add a "/ m" module.
-        It is more than one can be specified, separated by commas.
-        format) -a dirname:absdirpath:from,...
-        example) -a hoge:/tmp/hoge:
-    -h  help
-```
-
-適宜パスを通して使用してください。
-
 
 ## Getting started
+
+##### [ドキュメント](https://github.com/CyberAgent/beez-foundation/wiki)
 
 ```sh
 $ cd {Web共有したいディレクトリパス}
@@ -79,7 +59,6 @@ $ beez-foundation -s
 # open browser: http://0.0.0.0:1109
 ```
 
-[詳細ドキュメント:wiki](https://github.com/CyberAgent/beez-foundation/wiki)
 
 
 
