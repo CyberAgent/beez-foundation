@@ -69,9 +69,19 @@ usage bin/beez-foundation [-h|-c|-d]
 
 適宜パスを通して使用してください。
 
+
+
+
 ## Getting started
 
-@see wiki : [Document](https://github.com/CyberAgent/beez-foundation/wiki)
+```sh
+$ cd {Web共有したいディレクトリパス}
+$ beez-foundation -s
+# browser: http://0.0.0.0:1109
+```
+
+
+詳しくは、 [Document](https://github.com/CyberAgent/beez-foundation/wiki)
 
 
 
@@ -156,4 +166,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/CyberAgent/beez-foundation/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
