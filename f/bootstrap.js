@@ -19,6 +19,9 @@ var Bootstrap = function Bootstrap() {
     this.config = null;
     this.store = {};
     this.encode = 'utf-8';
+    //this.DEFAULT_CONFIG = beezlib.fsys.readJsonSync(__dirname + '/../default.json', true);
+    this.DEFAULT_CONFIG = __dirname + '/../default.json';
+
 };
 
 module.exports = new Bootstrap();
@@ -71,22 +74,30 @@ Bootstrap.prototype.run = function run(callback) {
             .version(self.package)
             .description('Beez server development platform.')
             .option('-c --config <path>', 'server config path(format: json)')
+            .option('-s --standalone', 'default configuration mode')
             .option('-d --debug', 'debug mode.')
             .option('-a --addmods <value>', 'I want to add a "/ m" module. It is more than one can be specified, separated by commas. format) -a dirname:absdirpath:from,... example) -a hoge:/tmp/hoge:')
             .parse(process.argv)
         ;
-
-        // check option
-        if (!commander.config) {
-            beezlib.logger.error('Please specify the path to the configuration file path. -c --config <path>');
-            process.exit(2);
-        }
 
         // option: debug
         beezlib.logger.level = beezlib.logger.LEVELS.WARN;
         if (commander.debug) {
             beezlib.logger.level = beezlib.logger.LEVELS.DEBUG;
         }
+
+        if (commander.standalone) {
+            // standalone mode
+            console.log('\n## [stand-alone mode]'.green);
+            commander.config = self.DEFAULT_CONFIG;
+        }
+
+        if (!commander.standalone && !commander.config) {
+            // check option
+            beezlib.logger.error('Please specify the path to the configuration file path. -c --config <path>');
+            process.exit(2);
+        }
+
 
         // load config
         try {
@@ -96,13 +107,15 @@ Bootstrap.prototype.run = function run(callback) {
                 beezlib.logger.error('file not found.', commander.config);
                 process.exit(2);
             }
+
+            beezlib.logger.debug('load config file. path:', commander.config);
             self.config = beezlib.fsys.readFileMultiConfigureSync(commander.config, self.encode);
+
         } catch (e) {
             beezlib.logger.error(e, 'path:', commander.config);
             beezlib.logger.debug(e.stack);
             process.exit(2);
         }
-
 
         // config check
         if (self.config.bootstrap && self.config.bootstrap.html) {
@@ -118,7 +131,9 @@ Bootstrap.prototype.run = function run(callback) {
         var cwd = self.config.cwd = process.cwd();
         var stat = self.config.app.stat;
 
-
+        /**
+         * Load store stat include files
+         */
         if (stat.include) {
             // include directory.
             var _stat_from = stat.include.from || '.';
@@ -131,20 +146,25 @@ Bootstrap.prototype.run = function run(callback) {
                 process.exit(2);
             }
 
+            try {
+                self.store.stat = new beezlib.fsys.store.JSONStore(stat.dir);
+            } catch (e) {
+                beezlib.logger.error(e, 'stat directory path:', stat.dir);
+                beezlib.logger.debug(e.stack);
+                process.exit(2);
+            }
+
         } else {
             // not include directory.
-            stat.dir = path.resolve(path.dirname(commander.config));
+            beezlib.logger.debug('skip stat include files');
+            stat.dir = null;
+            self.store.stat = {};
         }
 
 
-        try {
-            self.store.stat = new beezlib.fsys.store.JSONStore(stat.dir);
-        } catch (e) {
-            beezlib.logger.error(e, 'stat directory path:', stat.dir);
-            beezlib.logger.debug(e.stack);
-            process.exit(2);
-        }
-
+        /**
+         * Load store mock include files
+         */
         var mock = self.config.app.mock;
         if (mock && mock.use) { // mock server on!!
             if (mock.include) {
@@ -159,18 +179,21 @@ Bootstrap.prototype.run = function run(callback) {
                     process.exit(2);
                 }
 
+                try {
+                    self.store.mock = new beezlib.fsys.store.JSONStore(mock.dir);
+                } catch (e) {
+                    beezlib.logger.error(e, 'mock directory path:', mock.dir);
+                    beezlib.logger.debug(e.stack);
+                    process.exit(2);
+                }
+
             } else {
                 // not mock directory.
-                mock.dir = path.resolve(path.dirname(commander.config));
+                beezlib.logger.debug('skip stat include files');
+                mock.dir = null;
+                self.store.mock = null;
             }
 
-            try {
-                self.store.mock = new beezlib.fsys.store.JSONStore(mock.dir);
-            } catch (e) {
-                beezlib.logger.error(e, 'mock directory path:', mock.dir);
-                beezlib.logger.debug(e.stack);
-                process.exit(2);
-            }
         }
 
         // operation command search.

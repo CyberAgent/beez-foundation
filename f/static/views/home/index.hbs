@@ -7,6 +7,10 @@
 <hr />
 <ul class="nav nav-tabs nav-stacked">
   <li><a href="/m" alt="DirectoryIndex in Apache-based">Static file viewer</a></li>
-  <li><a href="/mock" alt="Mock Data viewer">Mock Data viewer</a></li>
-  <li><a href="/o" alt="Command Operations">Command Operations</a></li>
+  {{#if isMock}}
+    <li><a href="/mock" alt="Mock Data viewer">Mock Data viewer</a></li>
+  {{/if}}
+  {{#if isOperation}}
+    <li><a href="/o" alt="Command Operations">Command Operations</a></li>
+  {{/if}}
 </ul>
