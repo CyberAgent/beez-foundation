@@ -5,6 +5,8 @@ beez-foundation
 
 スマートフォン向けブラウザアプリ開発を迅速に開発・リリースするためのローカルWebサーバーです。
 
+<img width="500px" height="200px" src="https://github.com/CyberAgent/beez-foundation/wiki/images/1.x/top-000.png">
+
 ## beez-foundationの特徴
 
 beez-foundationの主な特徴は以下のような特徴を持っています。
@@ -54,6 +56,7 @@ $ beez-foundation -h
 **[Wiki : QuickStart](https://github.com/CyberAgent/beez-foundation/wiki/1.x-QuickStart)**
 
 
+
 ```sh
 $ cd {Web共有したいディレクトリパス}
 $ beez-foundation -s
@@ -78,7 +81,7 @@ $ beez-foundation -s
 
 **open browser: [http://0.0.0.0:1109](http://0.0.0.0:1109)**
 
-
+<img width="300px" height="100px" src="https://github.com/CyberAgent/beez-foundation/wiki/images/1.x/top-000.png">
 
 
 ### ブラウザからのオペレーション
