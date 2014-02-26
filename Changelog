@@ -3,6 +3,9 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Wed Feb 26 2014 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.7
+- [F] variable refarence error
+
 Wed Feb 26 2014 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.6
 - [A] Stand-alone(-s --standalone) mode
 - [F] The local directory to determine HTTP Response header contenttype
