@@ -71,18 +71,15 @@ usage bin/beez-foundation [-h|-c|-d]
 適宜パスを通して使用してください。
 
 
-
-
 ## Getting started
 
 ```sh
 $ cd {Web共有したいディレクトリパス}
 $ beez-foundation -s
-# browser: http://0.0.0.0:1109
+# open browser: http://0.0.0.0:1109
 ```
 
-
-詳しくは、 [Document](https://github.com/CyberAgent/beez-foundation/wiki)
+[詳細ドキュメント:wiki](https://github.com/CyberAgent/beez-foundation/wiki)
 
 
 
