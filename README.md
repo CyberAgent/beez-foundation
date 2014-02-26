@@ -37,16 +37,17 @@ beez-foundationでは、beezでの開発効率を上げるためにプレコン�
 ```sh
 $ npm install beez-foundation -g
 $ beez-foundation -h
-[mode] npm module access.
-Load beez-common: /Users/funagayama_kei/.nvm/v0.8.15/lib/node_modules/beez-foundation/bin/beez-common
-usage /Users/funagayama_kei/.nvm/v0.8.15/lib/node_modules/beez-foundation/bin/beez-foundation [-h|-c|-d]
-    -d  debug mode
-    -c  server config file path
-    -a  I want to add a "/ m" module.
-        It is more than one can be specified, separated by commas.
-        format) -a dirname:absdirpath:from,...
-        example) -a hoge:/tmp/hoge:
-    -h  help
+
+  Usage: beez-foundation [options]
+
+  Options:
+
+    -h, --help            output usage information
+    -V, --version         output the version number
+    -c --config <path>    server config path(format: json)
+    -s --standalone       default configuration mode
+    -d --debug            debug mode.
+    -a --addmods <value>  I want to add a "/ m" module. It is more than one can be specified, separated by commas. format) -a dirname:absdirpath:from,... example) -a hoge:/tmp/hoge:
 ```
 
 ### ソースからインストール
