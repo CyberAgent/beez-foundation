@@ -579,7 +579,7 @@ exports = module.exports = function modstatic(roots, options){
             return notfound(info.uri);
         }
 
-        beezlib.logger.debug("lang:",req.locales);
+        beezlib.logger.debug("lang:", req.locales);
 
         /**
          * Data Setup!!
@@ -664,6 +664,7 @@ exports = module.exports = function modstatic(roots, options){
          * info.stat.modroot: /User/taro/stat/fkei
          * info.stat.abspath: /User/taro/stat/fkei/aaa/bbb/index.js
          */
+
         info.stat.name = path.normalize(info.split[1]);
         if (!roots[info.stat.name]) { // module name not found
             return notfound(info.uri);
@@ -871,14 +872,21 @@ exports = module.exports = function modstatic(roots, options){
                 /**
                  * define the 'Content-Type' proprietary extension of Beez.
                  */
-                if (beezlib.css.sprite.isSpriteStylus(info.stat.path, config.sprite.options)) {
+                if (info.stat.fsstats.isDirectory()) {
+                    stream.type('text/html; charset="' + ENCODE + '"');
+
+                } else if (beezlib.css.sprite.isSpriteStylus(info.stat.path, config.sprite.options)) {
                     stream.type('text/plain; charset="' + ENCODE + '"');
+
                 } else if (REG_STYL.test(info.stat.path) && info.stat.fsstats.isFile()) {
                     stream.type('text/plain; charset="' + ENCODE + '"');
+
                 } else if (REG_HBS.test(info.stat.path) && info.stat.fsstats.isFile()) {
                     stream.type('text/plain; charset="' + ENCODE + '"');
+
                 } else if (REG_HBSC_JS.test(info.stat.path)) {
                     stream.type('application/javascript; charset="' + ENCODE + '"');
+
                 } else {
                     if (0 !== path.extname(path.basename(info.stat.path)).length) { // not directory
                         var mime = send.mime.lookup(info.stat.path);
