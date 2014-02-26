@@ -51,13 +51,32 @@ $ beez-foundation -h
 
 ## Getting started
 
-##### [ドキュメント](https://github.com/CyberAgent/beez-foundation/wiki)
+**[Wiki : QuickStart](https://github.com/CyberAgent/beez-foundation/wiki/1.x-QuickStart)**
+
 
 ```sh
 $ cd {Web共有したいディレクトリパス}
 $ beez-foundation -s
-# open browser: http://0.0.0.0:1109
+
+## Mode: [Stand-alone]
+
+##
+## Start
+## 		Beez Foundation Servers!!
+##
+##
+## 	Mock Server [ off ]
+##
+## 	Express server listening on port:1109
+## 		Static Server start [ success ]
+## 		compress: [on]
+## 		Please try to access. 
+## 			http://0.0.0.0:1109
+##
+
 ```
+
+**open browser: [http://0.0.0.0:1109](http://0.0.0.0:1109)**
 
 
 
