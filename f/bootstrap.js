@@ -102,7 +102,7 @@ Bootstrap.prototype.run = function run(callback) {
                 commander.addmods = _cwdmod;
             }
         } else {
-            console.log('\n## Mode:'.green, '[Configration-file]'.blue, commander.config.green);
+            console.log('\n## Mode:'.green, '[Configration-file]'.blue, (commander.config || 'configuration file not found.').green);
         }
 
         if (!commander.standalone && !commander.config) {
