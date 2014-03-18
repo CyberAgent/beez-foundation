@@ -187,7 +187,7 @@ Bootstrap.prototype.run = function run(callback) {
 
                 mock.dir = path.resolve(path.dirname(commander.config), _mock_from, _mock_path);
 
-                if (!beezlib.fsys.isDirectorySync(stat.dir)) {
+                if (!beezlib.fsys.isDirectorySync(mock.dir)) {
                     beezlib.logger.error('Directory(mock) does not exist. dir:', mock.dir);
                     process.exit(2);
                 }
