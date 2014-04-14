@@ -30,7 +30,7 @@ StatServer.prototype.run = function run(callback) {
     var app = this.app = express();
     var compress = bootstrap.config.app.stat.compress || false;
 
-    app.configure(function(){
+    app.configure(function () {
         app.set('port', process.env.PORT || bootstrap.config.app.stat.port || 1109);
         app.set('views', __dirname + '/views');
         app.set('view engine', 'hbs'); // handlebars
@@ -54,23 +54,25 @@ StatServer.prototype.run = function run(callback) {
             {
                 hidden: true,
                 redirect: true,
-                maxAge:0
+                maxAge: 0
             }
         ));
 
         app.use(express.static(path.join(__dirname, 'public')));
     });
 
-    app.configure('development', function(){
+    app.configure('development', function () {
         app.use(express.errorHandler());
     });
 
-    http.createServer(app).listen(app.get('port'), function(){
-        beezlib.logger.message("## \tExpress server listening on port:".info + (""+app.get('port')).info);
+    http.createServer(app).listen(app.get('port'), function () {
+        beezlib.logger.message("## \tExpress server listening on port:".info + ("" + app.get('port')).info);
         router.setup(app);
         // end
         var url = "http://0.0.0.0:" + app.get("port");
-        if (callback)
-            return callback(null, {port:app.get('port'), name: "mock", url: url, compress: compress});
+        if (callback) {
+            callback(null, { port: app.get('port'), name: "mock", url: url, compress: compress });
+            return;
+        }
     });
 };
