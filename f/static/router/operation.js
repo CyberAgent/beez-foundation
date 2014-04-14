@@ -20,10 +20,12 @@ module.exports = new OperationController();
  * @returns {}
  */
 OperationController.prototype.get = function get(req, res, next) {
-    res.locals({
+
+    res.locals = {
         title: 'Operation',
         view: 'operation',
         list: config.operation
-    });
+    };
+
     return res.render('operation');
 };

@@ -8,6 +8,13 @@ var path = require('path');
 var http = require('http');
 
 var express = require('express');
+var static_favicon = require('static-favicon');
+var morgan = require('morgan');
+var body_parser = require('body-parser');
+var method_override = require('method-override');
+var compression = require('compression');
+var errorhandler = require('errorhandler');
+
 
 var beezlib = require('beezlib');
 
@@ -34,28 +41,29 @@ MockServer.prototype.run = function run(callback) {
         return callback({name: 'NotRunning', message: 'Mock Server not running.'});
     }
 
-    app.configure(function () {
-        app.set('port', process.env.PORT || bootstrap.config.app.mock.port || 1121);
-        app.set('views', __dirname + '/views');
-        app.set('view engine', 'hbs'); // handlebars
-        app.use(express.favicon());
-        app.use(express.logger('dev'));
-        app.use(express.urlencoded());
-        app.use(express.json());
-        app.use(express.methodOverride());
-        app.use(lang());
-        app.use(addheader());
+    app.set('port', process.env.PORT || bootstrap.config.app.mock.port || 1121);
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'hbs'); // handlebars
+    app.use(static_favicon());
+    app.use(morgan('dev'));
+    app.use(body_parser.urlencoded());
+    app.use(body_parser.json());
+    app.use(method_override());
+    app.use(lang());
+    app.use(addheader());
 
-        if (compress) {
-            app.use(express.compress());
-        }
-        app.use(app.router);
-        app.use(express.static(path.join(__dirname, 'public')));
-    });
+    if (compress) {
+        app.use(compression());
+    }
 
-    app.configure('development', function () {
-        app.use(express.errorHandler());
-    });
+    //app.use(app.router);
+
+    app.use(express.static(path.join(__dirname, 'public')));
+
+    var env = process.env.NODE_ENV || 'development';
+    if ('development' === env) {
+        app.use(errorhandler());
+    }
 
     http.createServer(app).listen(app.get('port'), function () {
         beezlib.logger.message("## \tExpress server listening on port:".info + ("" + app.get('port')).info);

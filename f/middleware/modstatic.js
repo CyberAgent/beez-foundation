@@ -550,7 +550,13 @@ exports = module.exports = function modstatic(roots, options){
                     }
                 }
 
-                res.locals({list: list, view: 'walk', isSP: isSP, module: list[0].module});
+                res.locals = {
+                    list: list,
+                    view: 'walk',
+                    isSP: isSP,
+                    module: list[0].module
+                };
+
                 return res.render('walk');
             });
         };
@@ -642,7 +648,12 @@ exports = module.exports = function modstatic(roots, options){
                 }
             }
 
-            res.locals({list: list, view: 'walk', isSP: isSP, module: list[0].module});
+            res.locals = {
+                list: list,
+                view: 'walk',
+                isSP: isSP,
+                module: list[0].module
+            };
 
             // -- response send!!
             return res.render('walk');

@@ -24,7 +24,7 @@ module.exports = new MockviewController();
  * @returns {}
  */
 MockviewController.prototype.get = function get(req, res, next) {
-    if(!req.params.hash) {
+    if (!req.params.hash) {
         return res.json(404, {
             "error": {
                 "name": "Not Found",
@@ -59,12 +59,13 @@ MockviewController.prototype.get = function get(req, res, next) {
     }
 
 
-    res.locals({
+    res.locals = {
         title: 'Mockview Data Viewer',
         view: 'mockview',
         hash: hash,
         path: path,
         text: JSON.stringify(json, null, '    ')
-    });
+    };
+
     return res.render('mockview');
 };

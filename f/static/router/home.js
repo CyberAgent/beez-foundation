@@ -13,12 +13,13 @@ module.exports = new HomeController();
 
 HomeController.prototype.get = function get(req, res, next) {
     var config = bootstrap.config;
-    debugger;
-    res.locals({
+
+    res.locals = {
         title: 'Beez Foundation',
         view: 'home',
         isMock: !!config.app.mock.dir,
         isOperation: !!config.operation.length
-    });
+    };
+
     return res.render('home');
 };

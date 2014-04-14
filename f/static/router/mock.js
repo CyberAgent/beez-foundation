@@ -32,10 +32,11 @@ MockController.prototype.get = function get(req, res, next) {
         });
     }, this);
 
-    res.locals({
+    res.locals = {
         title: 'Mock Data Viewer',
         view: 'mock',
         list: list
-    });
+    };
+
     return res.render('mock');
 };
