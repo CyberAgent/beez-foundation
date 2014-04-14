@@ -28,7 +28,7 @@
         "require",
         "process",
         "module",
-        "export",
+        "exports",
         "__dirname",
         "console"
     ],
