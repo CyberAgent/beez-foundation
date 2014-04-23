@@ -57,4 +57,29 @@ bootstrap.run(function () { // start process
         console.info("##\n".info);
     });
 
+    var socketapp = require('./socket');
+    socketapp.run(function(err, result) {
+        if (err && err.hasOwnProperty('name') && err.name === 'NotRunning') {
+            console.info("## \tsocket Server".info, "[ off ]".blue);
+            console.info("##".info);
+            return;
+        }
+        if (err) {
+            console.info("## \t\tsocket Server start".info, "[ error ]".error);
+            console.info("##\n".info);
+            console.log("error message: ".error, 'Server start error.', err);
+            process.exit(1);
+        }
+
+        console.info("## \t\tsocket Server start".info, "[ success ]".blue);
+        if (result.compress) {
+            console.info("## \t\tcompress: [on]".info);
+        } else {
+            console.info("## \t\tcompress: [off]".info);
+        }
+        console.info("## \t\tPlease try to access. ".info);
+        console.info("## \t\t\t".info + result.url.yellow);
+        console.info("##\n".info);
+    });
+
 });
