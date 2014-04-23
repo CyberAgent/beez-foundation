@@ -209,6 +209,40 @@ Bootstrap.prototype.run = function run(callback) {
 
         }
 
+        /**
+         * Load store socket include files
+         */
+        var socket = self.config.app.socket;
+        if (socket && socket.use) { // socket server on!!
+            if (socket.include) {
+                // socket directory.
+                var _socket_from = socket.include.from || '.';
+                var _socket_path = socket.include.path || '';
+
+                socket.dir = path.resolve(path.dirname(commander.config), _socket_from, _socket_path);
+
+                if (!beezlib.fsys.isDirectorySync(socket.dir)) {
+                    beezlib.logger.error('Directory(socket) does not exist. dir:', socket.dir);
+                    process.exit(2);
+                }
+
+                try {
+                    self.store.socket = new beezlib.fsys.store.JSONStore(socket.dir);
+                } catch (e) {
+                    beezlib.logger.error(e, 'socket directory path:', socket.dir);
+                    beezlib.logger.debug(e.stack);
+                    process.exit(2);
+                }
+
+            } else {
+                // not socket directory.
+                beezlib.logger.debug('skip stat include files');
+                socket.dir = null;
+                self.store.socket = null;
+            }
+
+        }
+
         // operation command search.
         self.config.operation = self.config.app.operation || [];
 
