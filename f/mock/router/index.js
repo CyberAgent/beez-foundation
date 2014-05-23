@@ -7,6 +7,7 @@
 var fs = require('fs');
 var url = require('url');
 var path = require('path');
+var querystring = require("querystring");
 
 var _ = require('underscore');
 var beezlib = require('beezlib');
@@ -96,20 +97,20 @@ Router.prototype.transmission = function transmission(req, res, next) {
     };
 
     var method = req.method.toLowerCase();
-    var uri = req.url;
     if (proxy) {
         beezlib.logger.debug('local proxy access.');
     } else {
         beezlib.logger.debug('direct access.');
     }
 
+    var uri = querystring.unescape(req.url);
     var datas = load(uri);
     if (!datas) {
         beezlib.logger.debug("<< res.json application/javascript error");
         return res.json(500, {
             "error": {
                 "name": "no match uri",
-                "message": "No match uri: " + req.url
+                "message": "No match uri: " + uri
             }
         });
     }
