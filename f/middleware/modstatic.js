@@ -811,7 +811,8 @@ exports = module.exports = function modstatic(roots, options){
                 beezlib.image.imagemagick.ratioResize(
                     {
                         srcPath: srcpath,
-                        dstPath: path.dirname(srcpath)
+                        dstPath: path.dirname(srcpath),
+                        separator: separator
                     },
                     config.image.options.baseRatio,
                     [ratio],
