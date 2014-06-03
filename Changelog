@@ -3,6 +3,13 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Wed Jun 3 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.0
+- [F] ratioResize separator is undefined
+- [F] Add unescape URI in the mockdata
+- [A] run socket server
+- [C] update express4.x
+- [C] update dependencies
+
 Wed Feb 26 2014 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.7
 - [F] variable refarence error
 
@@ -75,3 +82,4 @@ Wed Jan 29 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.2
 
 * Feb Thu 21 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.0
 - Initial release.
+
