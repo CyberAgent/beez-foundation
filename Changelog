@@ -3,6 +3,9 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Wed Jun 20 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.1
+- [C] upgrade socket.io 1.0.x
+
 Wed Jun 3 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.0
 - [F] ratioResize separator is undefined
 - [F] Add unescape URI in the mockdata
@@ -82,4 +85,3 @@ Wed Jan 29 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.8.2
 
 * Feb Thu 21 2013 Kei FUNAGAYAMA <funagayama_kei@cyberagent.co.jp> - 0.6.0
 - Initial release.
-
