@@ -134,7 +134,6 @@ Router.prototype.transmission = function transmission(req, namespace, format, ca
 
         if (body.__error__) {
             var err = new Error('Custom Response close connection');
-            beezlib.logger.error(err.message);
             return callback && callback(err);
         }
 
@@ -159,53 +158,59 @@ Router.prototype.setup = function setup(app) {
     var self = this;
     var io = app.get('io');
     var namespace = config.app.socket.namespace;
+    var room;
 
     // set events for each namespace
     _.each(namespace, function (name) {
 
-        io.of(name).on('connection', function (socket) {
+        var index = name.indexOf('/');
+        if (index === 0) {
+            name = name.substr(1);
+        }
+
+        io.of('/' + name).on('connection', function (socket) {
             beezlib.logger.debug('connection start');
 
             socket.on('disconnect', function (socket) {
-                beezlib.logger.warn('disconnect namespace:', name);
+                beezlib.logger.warn('<< disconnect namespace:', name);
             });
 
-            socket.on('join', function (room) {
+            socket.on('join', function (_room) {
 
-                if (room) {
-                    beezlib.logger.debug('join the room :', room);
-                    socket.join(room);
-                    socket.set('room', room, function () {
-                        socket.emit('joined');
-                    });
+                if (_room) {
+                    beezlib.logger.debug('<< join the room :', _room);
+                    socket.join(_room);
+                    room = _room;
+                    socket.emit('joined');
                 }
 
             });
 
             socket.on('message', function (req, format) {
-                beezlib.logger.debug('get message :', req);
+                beezlib.logger.debug('<< get message :', req);
 
                 self.transmission(req, name, format, function (err, res) {
                     if (err) {
-                        socket.emit('error', err.message);
-                        socket.disconnect();
+                        socket.emit('error', err);
                         return;
                     }
-                    socket.get('room', function (err, room) {
-                        if (err) {
-                            logger.warn(err);
-                        }
-                        socket.emit('message', res);
-                        if (room) {
-                            beezlib.logger.debug('send message to room :', room, ' namespace: ', name);
-                            socket.broadcast.emit('message', res);
-                        } else {
-                            beezlib.logger.debug('send message to all. namespace: ', name);
-                            socket.broadcast.to(room).emit('message', res);
-                        }
-                    });
+
+                    socket.emit('message', res);
+                    if (room) {
+                        beezlib.logger.debug('>> send message to room :', room, ' namespace: ', name);
+                        socket.broadcast.emit('message', res);
+                    } else {
+                        beezlib.logger.debug('>> send message to all. namespace: ', name);
+                        socket.broadcast.to(room).emit('message', res);
+                    }
+
                 });
 
+            });
+
+            socket.on('error', function (err) {
+                beezlib.logger.error(err);
+                socket.disconnect();
             });
 
         });
