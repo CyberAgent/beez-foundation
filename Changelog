@@ -3,6 +3,9 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Wed Jun 24 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.2
+- [C] changed the format of mockdata for socket connection
+
 Wed Jun 20 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.1
 - [C] upgrade socket.io 1.0.x
 
