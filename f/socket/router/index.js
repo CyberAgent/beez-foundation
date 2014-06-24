@@ -125,7 +125,7 @@ Router.prototype.transmission = function transmission(req, namespace, format, ca
 
         body = JSON.parse(body);
         var datas = load(namespace);
-        var data = datas[method];
+        var data = (datas[service] && datas[service][method]) || datas[method];
         var delay = config.app.socket.delay || body.__delay__ || 0;
 
         if (!data) {
