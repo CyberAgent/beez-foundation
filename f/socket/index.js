@@ -44,7 +44,7 @@ SocketServer.prototype.run = function run(callback) {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'hbs'); // handlebars
     app.use(morgan('dev'));
-    app.use(body_parser.urlencoded());
+    app.use(body_parser.urlencoded({extended: true}));
     app.use(body_parser.json());
     app.use(method_override());
     app.use(lang());

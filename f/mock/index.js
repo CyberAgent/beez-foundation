@@ -46,7 +46,7 @@ MockServer.prototype.run = function run(callback) {
     app.set('view engine', 'hbs'); // handlebars
     app.use(favicon(config.HOME + '/static/public/__beez_foundation__/img/favicon.ico'));
     app.use(morgan('dev'));
-    app.use(body_parser.urlencoded());
+    app.use(body_parser.urlencoded({extended: true}));
     app.use(body_parser.json());
     app.use(method_override());
     app.use(lang());
