@@ -8,7 +8,7 @@ var path = require('path');
 var http = require('http');
 
 var express = require('express');
-var static_favicon = require('static-favicon');
+var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var body_parser = require('body-parser');
 var method_override = require('method-override');
@@ -44,7 +44,7 @@ MockServer.prototype.run = function run(callback) {
     app.set('port', process.env.PORT || bootstrap.config.app.mock.port || 1121);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'hbs'); // handlebars
-    app.use(static_favicon());
+    app.use(favicon(config.HOME + '/static/public/__beez_foundation__/img/favicon.ico'));
     app.use(morgan('dev'));
     app.use(body_parser.urlencoded());
     app.use(body_parser.json());

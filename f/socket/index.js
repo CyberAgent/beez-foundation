@@ -8,7 +8,7 @@ var path = require('path');
 var http = require('http');
 
 var express = require('express');
-var static_favicon = require('static-favicon');
+
 var morgan = require('morgan');
 var body_parser = require('body-parser');
 var method_override = require('method-override');
@@ -43,7 +43,6 @@ SocketServer.prototype.run = function run(callback) {
     app.set('port', process.env.PORT || bootstrap.config.app.socket.port || 1115);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'hbs'); // handlebars
-    app.use(static_favicon());
     app.use(morgan('dev'));
     app.use(body_parser.urlencoded());
     app.use(body_parser.json());
