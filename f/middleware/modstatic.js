@@ -872,15 +872,17 @@ exports = module.exports = function modstatic(roots, options){
                 /**
                  * deliver the target file / folder.
                  */
-                var stream = send(req, info.stat.path)
-                        .index('/')
-                        .maxage(options.maxAge || 0)
-                        .root(info.stat.modroot)
-                        .hidden(options.hidden)
-                        .on('error', error)
-                        .on('directory', directory)
-                        .pipe(res)
-                    ;
+                var stream = send(req, info.stat.path, {
+                    maxAge: options.maxAge || 0,
+                    root: info.stat.modroot,
+                    dotfiles: options.hidden ? 'allow' : 'ignore',
+                    index: false
+                })
+                .on('error', error)
+                .on('directory', directory)
+                .pipe(res)
+                ;
+
                 /**
                  * define the 'Content-Type' proprietary extension of Beez.
                  */
