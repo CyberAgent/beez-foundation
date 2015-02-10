@@ -79,7 +79,8 @@
     "errorhandler": "~1.2.0",
     "jsonminify": "~0.2.3",
     "suns": "~0.4.5",
-    "socket.io": "~1.1.0"
+    "socket.io": "~1.1.0",
+    "basic-auth-connect": "^1.0.0"
   },
   "devDependencies": {
     "jshint": "~2.5.0",
