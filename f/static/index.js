@@ -16,7 +16,7 @@ var body_parser = require('body-parser');
 var method_override = require('method-override');
 var compression = require('compression');
 var errorhandler = require('errorhandler');
-
+var basicAuth = require('basic-auth-connect');
 
 var beezlib = require('beezlib');
 
@@ -39,6 +39,7 @@ module.exports = new StatServer();
 StatServer.prototype.run = function run(callback) {
     var app = this.app = express();
     var compress = bootstrap.config.app.stat.compress || false;
+    var basic = bootstrap.config.app.stat.basic;
 
     app.set('port', process.env.PORT || bootstrap.config.app.stat.port || 1109);
     app.set('views', __dirname + '/views');
@@ -50,6 +51,10 @@ StatServer.prototype.run = function run(callback) {
     app.use(method_override());
     app.use(lang());
     app.use(addheader());
+
+    if (basic && basic.use) {
+        app.use(basicAuth(basic.id, basic.pass));
+    }
 
     if (compress) {
         app.use(compression());

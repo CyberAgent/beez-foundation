@@ -14,7 +14,7 @@ var body_parser = require('body-parser');
 var method_override = require('method-override');
 var compression = require('compression');
 var errorhandler = require('errorhandler');
-
+var basicAuth = require('basic-auth-connect');
 
 var beezlib = require('beezlib');
 
@@ -34,6 +34,7 @@ module.exports = new MockServer();
 MockServer.prototype.run = function run(callback) {
     var compress = config.app.mock.compress || false;
     var app = this.app = express();
+    var basic = config.app.mock.basic;
 
     config.mockapp = app;
 
@@ -51,6 +52,10 @@ MockServer.prototype.run = function run(callback) {
     app.use(method_override());
     app.use(lang());
     app.use(addheader());
+
+    if (basic && basic.use) {
+        app.use(basicAuth(basic.id, basic.pass));
+    }
 
     if (compress) {
         app.use(compression());
