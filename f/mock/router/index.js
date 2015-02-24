@@ -16,6 +16,40 @@ var bootstrap = require('../../bootstrap');
 var config = bootstrap.config;
 var store = bootstrap.store;
 
+var parseUri = function parseUri(string) {
+    var split = string.split('?'),
+        uri = split[0],
+        query = split[1] && querystring.parse(split[1]) || null;
+
+    return {
+        query: query,
+        uri: uri
+    };
+};
+
+var findResponse = function findResponse(data, target) {
+    var targetData = parseUri(target);
+    var result;
+
+    _.some(data, function (value, key) {
+        var uriData = parseUri(key);
+        if (
+            targetData.uri === uriData.uri &&
+            _.isEqual(targetData.query, uriData.query)
+        ) {
+            result = {
+                key: key,
+                value: value
+            };
+            return true;
+        } else {
+            return false;
+        }
+    });
+
+    return result;
+};
+
 var Router = function () {
 };
 
@@ -59,10 +93,11 @@ Router.prototype.transmission = function transmission(req, res, next) {
      * I read the mock data.
      */
     var load = function load(key, noRetry) {
-        if (store.mock.mapping.hasOwnProperty(key)) {
-            var file = store.mock.mapping[key];
+        var res = findResponse(store.mock.data, key);
+        if (res) {
+            var file = store.mock.mapping[res.key];
             store.mock.reload(file);
-            return store.mock.data[key];
+            return res.value;
         }
         if (!noRetry) {
             store.mock.reloadAll();
