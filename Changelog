@@ -3,6 +3,9 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Mon Feb 24 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.6
+- [C] ignore the order of the query
+
 Mon Feb 10 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.5
 - [A] basic auth
 
