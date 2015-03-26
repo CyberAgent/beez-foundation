@@ -150,7 +150,7 @@ Router.prototype.transmission = function transmission(req, res, next) {
         });
     }
     var data = datas[method];
-    if (!data) {
+    if (_.isUndefined(data)) {
         if (method === 'options') {
             return res.end(); // HTTP Method: OPTIONS
         }
@@ -206,10 +206,15 @@ Router.prototype.transmission = function transmission(req, res, next) {
             return res.send(status, data);
         }
 
+        if (_.isNull(data) || _.isEmpty(data)) {
+            beezlib.logger.debug("<< res.status")
+            return res.status(status).end()
+        }
+
         // mock data search
         walkObj(data);
 
-        beezlib.logger.debug("<< res.json application/javascript");
+        beezlib.logger.debug("<< res.json application/json");
         return res.json(status, data);
 
     }, delay); // Custom response time. request get parameter ?__delay__=1000 (1s) or config.app.mock.delay(ms)
