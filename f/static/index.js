@@ -16,7 +16,7 @@ var body_parser = require('body-parser');
 var method_override = require('method-override');
 var compression = require('compression');
 var errorhandler = require('errorhandler');
-var basicAuth = require('basic-auth-connect');
+var basicAuth = require('../middleware/basicauth');
 
 var beezlib = require('beezlib');
 
