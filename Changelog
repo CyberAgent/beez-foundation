@@ -3,6 +3,10 @@ Changelog
 Key
 [A] - Added, [C] - Changed, [F] - Fixed, [R] - Removed
 
+Mon Jun 1 2015 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.7
+- [F] respond to OPTIONS request without requiring authentication
+- [A] enable ot respond empty body with null or empty object
+
 Mon Feb 24 2014 Masaki Sueda <sueda_masaki@cyberagent.co.jp> - 0.9.6
 - [C] ignore the order of the query
 
